@@ -13749,7 +13749,10 @@ fieldset:disabled .btn {
 
   .card {
     background-color: #222;
-    border: 1px solid rgba(250, 250, 250, .125)
+    border: 1px solid rgba(250, 250, 250, .125);
+    -webkit-box-shadow: 10px 10px 0px 0px rgba(227,227,227,0.1);
+    -moz-box-shadow: 10px 10px 0px 0px rgba(227,227,227,0.1);
+    box-shadow: 10px 10px 0px 0px rgba(227,227,227,0.1);
   }
 
   .card-header {
