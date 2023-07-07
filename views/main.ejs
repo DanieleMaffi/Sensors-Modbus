@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="images/x-icon" href="/minilogo.png" />
+    <!-- Bootstrap CSS -->
+    <title>Form</title>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: center; margin-top: 200px;">
+        <h2 class="title" style="font-size: 3.5rem; font-weight: 400;">
+            Titolo
+        </h2>
+    </div>
+    <div class="container my-5">
+        <div class="card mx-auto card-table topdown-animation" style="margin-top:20px;">
+            <div class="card-body">
+                <form action="/sendForm" method="POST">
+                    <div class="mb-4">
+                        <label for="stabilimento" class="form-label">Misuratore</label>
+                        <select class="form-control" name="misuratore" id="misuratore">
+                            <option value="none" selected disabled hidden>
+                                Seleziona un misuratore
+                            </option>
+                            <% for (var i=0; i < datalog.length; i++) { %>
+                                <option value="<%=datalog[i].NomeMisuratore%>">
+                                    <%=datalog[i].NomeMisuratore%>
+                                </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="dateFrom" class="form-label">Da</label>
+                        <input type="datetime-local" id="dateFrom" class="form-control" name="dateFrom">
+                    </div>
+                    <div class="mb-4">
+                        <label for="dateTo" class="form-label">A</label>
+                        <input type="datetime-local" id="dateTo" class="form-control" name="dateTo">
+                    </div>
+                    <button type="submit" id="submitBtn" class="btn btn-primary mt-1 mb-2 topdownslower-animation" disabled>Invia</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        let misuratore = document.getElementById('misuratore')
+        let button = document.getElementById('submitBtn')
+        let dateFrom = document.getElementById('dateFrom')
+        let dateTo = document.getElementById('dateTo')
+
+        function checkForm() {
+            if(misuratore.value && dateFrom.value && dateFrom.value)
+                button.disabled = false
+        }
+
+        let option = document.createElement("option");
+        option.value = "none"
+        option.text = "Seleziona un misuratore"
+        option.disabled = true
+        option.selected = true
+        option.hidden = true
+        misuratore.appendChild(option)
+
+        misuratore.addEventListener("change", checkForm)
+        dateFrom.addEventListener("change", checkForm)
+        dateTo.addEventListener("change", checkForm)
+
+    </script>
+</body>
+<!--
+                 *       +
+           '                  |
+       ()    .-.,="``"=.    - o -
+             '=/_       \     |
+          *   |  '=._    |
+               \     `=./`,        '
+            .   '=.__.=' `='      *
+   +                         +
+        O      *        '       .
+-->
+
+</html>
