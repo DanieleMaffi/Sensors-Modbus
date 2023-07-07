@@ -54,7 +54,7 @@
         let dateTo = document.getElementById('dateTo')
 
         function checkForm() {
-            if(misuratore.value && dateFrom.value && dateFrom.value)
+            if(misuratore.value != "none" && dateFrom.value && dateTo.value)
                 button.disabled = false
         }
 
