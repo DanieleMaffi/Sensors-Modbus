@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="images/x-icon" href="/minilogo.png" />
+    <title>Report</title>
+</head>
+<body>
+    
+    <div class="container my-5" style="padding-top: 7vh;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <a href="\home" class="idLink"
+            style="top: 50px;  position: absolute;">Torna alla
+            home</a>
+        </div>
+        <div class="card mx-auto card-table">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <h3>Report</h3>
+                    <a href="#" id="reloadBtn" class="idLink">Aggiorna</a>
+                </div>
+                <% if (datalog.length !=0) { %>
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Misuratore</th>
+                                <th scope="col">Valore</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (let i = 0; i < datalog.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%=datalog[i].NomeMisuratore%>
+                                    </td>
+                                    <td>
+                                        <%=datalog[i].Differenza%>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <h4 style="text-align: center; font-weight: 400;">Nessun dato presente</h4>
+                        <% } %>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

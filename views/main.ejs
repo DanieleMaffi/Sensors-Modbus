@@ -21,18 +21,23 @@
         <div class="card mx-auto card-table topdown-animation" style="margin-top:20px;">
             <div class="card-body">
                 <form action="/sendForm" method="POST">
-                    <div class="mb-4">
-                        <label for="stabilimento" class="form-label">Misuratore</label>
-                        <select class="form-control" name="misuratore" id="misuratore">
-                            <option value="none" selected disabled hidden>
-                                Seleziona un misuratore
-                            </option>
-                            <% for (var i=0; i < datalog.length; i++) { %>
-                                <option value="<%=datalog[i].NomeMisuratore%>">
-                                    <%=datalog[i].NomeMisuratore%>
-                                </option>
-                            <% } %>
-                        </select>
+                    <div class="mb-4" style="display: flex; flex-direction: row; align-items: end;">
+                        <div style="flex: 5;">
+                            <label for="stabilimento" class="form-label">Misuratore</label>
+                            <select class="form-control" name="misuratore" id="misuratore">
+                                <% for (var i=0; i < datalog.length; i++) { %>
+                                    <option value="<%=datalog[i].NomeMisuratore%>">
+                                        <%=datalog[i].NomeMisuratore%>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+                        <div style="display: flex; justify-content: center; flex: 1;">
+                            <label class="switch">
+                                <input type="checkbox" name="isReport" id="isReport">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
                     </div>
                     <div class="mb-4">
                         <label for="dateFrom" class="form-label">Da</label>
@@ -42,35 +47,13 @@
                         <label for="dateTo" class="form-label">A</label>
                         <input type="datetime-local" id="dateTo" class="form-control" name="dateTo">
                     </div>
-                    <button type="submit" id="submitBtn" class="btn btn-primary mt-1 mb-2 topdownslower-animation" disabled>Invia</button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary mt-1 mb-2 topdownslower-animation"
+                        disabled>Invia</button>
                 </form>
             </div>
         </div>
     </div>
-    <script>
-        let misuratore = document.getElementById('misuratore')
-        let button = document.getElementById('submitBtn')
-        let dateFrom = document.getElementById('dateFrom')
-        let dateTo = document.getElementById('dateTo')
-
-        function checkForm() {
-            if(misuratore.value != "none" && dateFrom.value && dateTo.value)
-                button.disabled = false
-        }
-
-        let option = document.createElement("option");
-        option.value = "none"
-        option.text = "Seleziona un misuratore"
-        option.disabled = true
-        option.selected = true
-        option.hidden = true
-        misuratore.appendChild(option)
-
-        misuratore.addEventListener("change", checkForm)
-        dateFrom.addEventListener("change", checkForm)
-        dateTo.addEventListener("change", checkForm)
-
-    </script>
+    <script src="./scripts/main.js"></script>
 </body>
 <!--
                  *       +
